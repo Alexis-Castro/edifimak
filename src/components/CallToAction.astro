@@ -1,0 +1,86 @@
+---
+// fetch api a un producto en oferta/recomendado/random
+import ctaAvif from "../images/cta.avif";
+import ctaWebp from "../images/cta.webp";
+import ctaJpg from "../images/cta.jpg";
+
+---
+
+<section class="py-16 px-6 lg:py-32 lg:px-14 bg-center bg-gray-800 relative overflow-hidden">
+   <div class="container 2xl:max-w-[1344px]">
+      <div class="md:flex items-center ">
+         <div class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl lg:grid lg:grid-cols-2 lg:gap-24">
+            <div>
+               <h4 class="text-gray-300">Herramientas eléctricas</h4>
+               <h2
+                  class="text-white text-xl lg:text-2xl leading-tight font-bold after:w-10 after:h-1 after:mr-auto after:mt-4 after:bg-sky-600 after:block after:rounded"
+               >
+                  Atornillador
+               </h2>
+               <div class="mt-5 md:mt-6 flex gap-2 flex-col sm:flex-row">
+                  <a
+                     class="py-2.5 px-4 md:px-7 rounded-md shadow bg-sky-600 text-white font-medium hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-300 focus:ring-offset-gray-900 whitespace-nowrap sm:w-min text-center text-base transition"
+                     href="#">Comprar</a
+                  >
+               </div>
+
+            </div>
+         </div>
+
+         <div class="sm:mx-auto sm:max-w-3xl sm:px-6">
+            <div
+               class="py-12 sm:relative sm:mt-12 sm:py-16 lg:absolute lg:inset-y-0 lg:right-0 lg:top-0 lg:w-1/2"
+            >
+               <div class="hidden sm:block">
+                  <svg
+                     class="absolute top-0 right-1/2 -mr-3 lg:m-0 lg:left-0"
+                     width="404"
+                     height="392"
+                     fill="none"
+                     viewBox="0 0 404 392"
+                  >
+                     <defs>
+                        <pattern
+                           id="837c3e70-6c3a-44e6-8854-cc48c737b659"
+                           x="0"
+                           y="0"
+                           width="20"
+                           height="20"
+                           patternUnits="userSpaceOnUse"
+                        >
+                           <rect
+                              x="0"
+                              y="0"
+                              width="4"
+                              height="4"
+                              class="text-gray-600"
+                              fill="currentColor"></rect>
+                        </pattern>
+                     </defs>
+                     <rect
+                        width="404"
+                        height="392"
+                        fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)"
+                     ></rect>
+                  </svg>
+               </div>
+               <div
+                  class="relative pl-4 -mr-20 sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full lg:pl-12"
+               >
+                  <picture>
+                     <source srcset={ctaAvif} type="image/avif" />
+                     <source srcset={ctaWebp} type="image/webp" />
+                     <img
+                        class="w-full rounded-md shadow-xl ring-opacity-90 lg:h-full lg:w-auto lg:max-w-none"
+                        src={ctaJpg}
+                        alt="Edifimak"
+                        width="2000"
+                        height="1058"
+                     />
+                  </picture>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
