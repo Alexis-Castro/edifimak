@@ -1,0 +1,207 @@
+---
+import Layout from "../../../layouts/base.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import Product from "../../../components/Product.astro";
+
+export async function getStaticPaths({ paginate }) {
+   // Carga tus datos con fetch(), Astro.glob(), etc.
+   // const urlProducts = `https://api.escuelajs.co/api/v1/products?offset=0&limit=12`;
+   // const urlCategories = `https://api.escuelajs.co/api/v1/categories`;
+   // const [resCategories, respProducts] = await Promise.all([
+   //    fetch(urlCategories),
+   //    fetch(urlProducts),
+   // ]);
+   // const [{ data: categoriess }, { data: products } ] = await Promise.all([
+   //    resCategories.json(),
+   //    respProducts.json()
+   // ]);
+
+   const url = `https://api.escuelajs.co/api/v1/products`;
+   const resp = await fetch(url);
+   const data = await resp.json();
+
+   // const productos = products.filter((product) => {});
+   const categoriess = data.flatMap(
+      (post: { category: { name: string } }) => post.category
+   );
+
+   return categoriess?.map((category: { name: string }) => {
+      const filteredProducts = data.filter(
+         (product: { category: { name: string } }) =>
+            product.category.name.toLowerCase() === category.name.toLowerCase()
+      );
+      return paginate(filteredProducts, {
+         params: { category: category.name.toLowerCase() },
+         pageSize: 12,
+      });
+   });
+
+   // Devuelve una colección paginada de rutas para todos los artículos.
+   // return paginate(categories, {
+   //    pageSize: 2,
+   //    // params: {
+   //    //    category: categories.category,
+   //    // },
+   // });
+}
+
+const { page } = Astro.props;
+const { category } = Astro.params;
+
+console.log(Astro.props);
+console.log(Astro.params);
+---
+
+<Layout title={`Edifimak - ${category.toUpperCase()}`} bodyClass="bg-slate-900">
+   <Header />
+
+   <section class="pt-16 bg-contact bg-center bg-cover bg-no-repeat">
+      <div
+         class="hero grow shrink-0 px-6 py-24 md:py-36 md:px-16 flex items-center"
+      >
+         <div class="container grow 2xl:max-w-[1344px]">
+            <div class="md:flex items-center justify-center">
+               <div class="text-center">
+                  <h2 class="text-2xl font-bold uppercase text-white">
+                     {category}
+                  </h2>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <section class="py-12 px-1 lg:py-24 lg:px-14 bg-slate-900">
+      <div class="container grow 2xl:max-w-[1344px] space-y-10">
+         <div
+            class="mx-auto grid grid-cols-2 gap-x-1 gap-y-7 lg:gap-y-12 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 justify-items-center"
+         >
+            {
+               page.data?.map(
+                  (products: {
+                     category: { name: string };
+                     title: string;
+                     price: number;
+                     images: string[];
+                  }) => (
+                     <Product
+                        category={products.category.name}
+                        title={products.title}
+                        price={products.price}
+                        images={products.images}
+                     />
+                  )
+               )
+            }
+         </div>
+         
+         <div
+            class="flex items-center justify-center sm:justify-between border-t border-gray-500 px-4 py-3 sm:px-6"
+         >
+            
+            <div
+               class="sm:flex sm:flex-1 sm:items-center sm:justify-between space-y-4 sm:space-y-0"
+            >
+               <div>
+                  <p class="text-sm text-gray-300">
+                     Mostrando del
+                     <span class="font-bold">{page.start + 1}</span>
+                     al
+                     <span class="font-bold">{page.end + 1}</span>
+                     de
+                     <span class="font-bold">{page.total}</span>
+                     resultados
+                  </p>
+               </div>
+               <div>
+                  <nav
+                     class="isolate inline-flex -space-x-px rounded-md shadow-sm"
+                     aria-label="Pagination"
+                  >
+                     <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-slate-800 border-gray-700 text-white hover:bg-gray-700" -->
+                     {
+                        page.url.prev ? (
+                           <a
+                              href={`/edifimak${page.url.prev}`}
+                              class="relative inline-flex items-center rounded-l-md border border-gray-700 bg-slate-800 px-3 py-2 text-sm font-medium text-white hover:bg-gray-700 focus:z-20"
+                           >
+                              <span class="sr-only">Anterior</span>
+
+                              <svg
+                                 class="h-5 w-5"
+                                 xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 20 20"
+                                 fill="currentColor"
+                                 aria-hidden="true"
+                              >
+                                 <path
+                                    fill-rule="evenodd"
+                                    d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
+                                    clip-rule="evenodd"
+                                 />
+                              </svg>
+                           </a>
+                        ) : null
+                     }
+                     <!-- lista de páginas -->
+                     {
+                        Array.from(
+                           { length: page.lastPage },
+                           (_, index) => index + 1
+                        ).map((i) => (
+                           <a
+                              href={
+                                 "/edifimak/" +
+                                 // page.url.current +
+                                 "category/" + category +
+                                 (i > 1 ? "/"+i : "")
+                              }
+                              aria-current="page"
+                              class:list={[
+                                 i == page.currentPage
+                                    ? "z-10 bg-gray-700 border-gray-700 text-white"
+                                    : "bg-slate-800 border-gray-700 text-white hover:bg-gray-700 ",
+                                 "relative inline-flex items-center px-4 py-2 border text-sm font-medium",
+                              ]}
+                           >
+                              {i}
+                           </a>
+                        ))
+                     }
+
+                     {
+                        page.url.next ? (
+                           <a
+                              href={`/edifimak${page.url.next}`}
+                              class="relative inline-flex items-center rounded-r-md border border-gray-700 bg-slate-800 px-3 py-2 text-sm font-medium text-white hover:bg-gray-700 focus:z-20"
+                           >
+                              <span class="sr-only">Siguiente</span>
+
+                              <svg
+                                 class="h-5 w-5"
+                                 xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 20 20"
+                                 fill="currentColor"
+                                 aria-hidden="true"
+                              >
+                                 <path
+                                    fill-rule="evenodd"
+                                    d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                                    clip-rule="evenodd"
+                                 />
+                              </svg>
+                           </a>
+                        ) : null
+                     }
+                  </nav>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <!-- <Productos /> -->
+
+   <Footer />
+</Layout>

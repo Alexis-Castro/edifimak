@@ -1,0 +1,43 @@
+---
+import Layout from "../../layouts/base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import Product from "../../components/Product.astro";
+
+export async function getStaticPaths() {
+   const url = `https://api.escuelajs.co/api/v1/products`;
+   const resp = await fetch(url);
+   const data = await resp.json();
+
+   return data.map((product: { title: string }) => ({
+      params: {
+         id: product.title
+            .toLowerCase()
+            .replace(/ /g, "-")
+            .replace(/[^\w-]+/g, ""),
+      },
+      props: {
+         product,
+      },
+   }));
+}
+
+const { images, category, title, price } = Astro.props.product;
+// console.log(Astro.props);
+
+---
+
+<Layout title={`Edifimak - ${ title }`} bodyClass="">
+   <Header />
+
+   <main class="pt-16">
+      <Product
+         category={category.name}
+         title={title}
+         price={price}
+         images={images}
+      />
+   </main>
+
+   <Footer />
+</Layout>

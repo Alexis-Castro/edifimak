@@ -1,0 +1,116 @@
+---
+import Layout from "../layouts/base.astro";
+import Productos from "./Productos.astro";
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
+
+export async function getStaticPaths() {
+   const url = `https://api.escuelajs.co/api/v1/categories`;
+   const resp = await fetch(url);
+   const data = await resp.json();
+
+   // console.log(data);
+
+   return data.map((category: { name: string }) => ({
+      params: {
+         id: category.name
+            .toLowerCase()
+            .replace(/ /g, "-")
+            .replace(/[^\w-]+/g, ""),
+      },
+      props: {
+         category,
+      },
+   }));
+}
+
+const { name } = Astro.props.category;
+
+// console.log(Astro.params);
+// console.log(Astro.props);
+---
+
+<Layout title="Edifimak - Tienda" bodyClass="">
+   <Header />
+
+   <section class="pt-16 bg-contact bg-center bg-cover bg-no-repeat">
+      <div
+         class="hero grow shrink-0 px-6 py-32 md:py-36 md:px-16 flex items-center"
+      >
+         <div class="container grow 2xl:max-w-[1344px]">
+            <div class="md:flex items-center justify-center">
+               <div class="text-center">
+                  <h2 class="text-2xl font-bold uppercase text-white">
+                     { name }
+                  </h2>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <!-- <section class="py-12 px-1 lg:py-24 lg:px-14 bg-slate-900">
+      <div class="container relative space-y-10 2xl:max-w-[1344px]">
+         <div class="md:flex items-center">
+            <div class="block basis-0 flex-shrink flex-grow p-2 text-center">
+               <h2
+                  class="text-xl lg:text-2xl leading-tight font-bold after:w-10 after:h-1 after:mx-auto after:mt-4 after:bg-sky-600 after:block after:rounded text-white"
+               >
+                  Productos
+               </h2>
+            </div>
+         </div>
+   
+         <div
+            class="mx-auto grid grid-cols-2 gap-x-1 gap-y-7 lg:gap-y-12 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 justify-items-center"
+         >
+            {
+               data?.map(
+                  (products: {
+                     images: string[];
+                     category: { name: string };
+                     title: string;
+                     price: number;
+                  }) => (
+                     <article class="flex flex-col w-44 sm:w-60 md:w-80 xl:w-80 mx-auto rounded-lg overflow-hidden group transition">
+                        <a href={`/edifimak/products/${products.title}`} class="relative block bg-slate-800">
+                           <figure class="overflow-hidden aspect-w-3 aspect-h-2 w-full xl:aspect-w-8 xl:aspect-h-6">
+                              <img
+                                 src={products.images[0]}
+                                 alt="Usuario"
+                                 class="h-full w-full object-cover object-center group-hover:scale-105 transition duration-300"
+                              />
+                           </figure>
+                           <div class="p-4 space-y-4">
+                              <div class="flex items-center justify-between text-center font-medium">
+                                 <div class="leading-tight text-left">
+                                    <h5 class="uppercase text-xs text-gray-400">
+                                       {products.category.name}
+                                    </h5>
+                                    <h3 class="text-gray-200 leading-tight text-base mb-3">
+                                       {products.title}
+                                    </h3>
+                                    <h4 class="text-white text-base lg:text-lg font-medium rounded-lg self-end">
+                                       S/{products.price}
+                                    </h4>
+                                 </div>
+                              </div>
+                              <div class="flex flex-col">
+                                 <button class="py-1.5 px-3 md:px-7 rounded-md shadow bg-sky-600 text-white font-medium hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-300 focus:ring-offset-gray-900 whitespace-nowrap text-center hover:scale-105 transition">
+                                    Comprar
+                                 </button>
+                              </div>
+                           </div>
+                        </a>
+                     </article>
+                  )
+               )
+            }
+         </div>
+      </div>
+   </section> -->
+
+   <!-- <Productos /> -->
+
+   <Footer />
+</Layout>

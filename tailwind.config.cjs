@@ -4,8 +4,8 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 
 module.exports = {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-	theme: {
+   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+   theme: {
       fontFamily: {
          'sans': ['Barlow', ...defaultTheme.fontFamily.sans],
          // 'monospace': ['Inter var', 'monospace'],
@@ -28,14 +28,14 @@ module.exports = {
       },
       extend: {
          keyframes: {
-				scale: {
-				  '0%': { transform: 'scale(1)' },
-				  '100%': { transform: 'scale(1.1)' },
-				}
-			},
-			animation: {
-				'scale': 'scale 0.6s ease infinite alternate',
-			},
+            scale: {
+               '0%': { transform: 'scale(1)' },
+               '100%': { transform: 'scale(1.1)' },
+            }
+         },
+         animation: {
+            'scale': 'scale 0.6s ease infinite alternate',
+         },
          backgroundImage: {
             "gradient-card": "linear-gradient(45deg, #4f39fa, #da62c4 30%, hsl(17, 24%, 90%) 60%);",
             'cta': "url(/src/images/cta.webp)",
@@ -54,5 +54,11 @@ module.exports = {
          }
       },
    },
-   plugins: [],
+   corePlugins: {
+      aspectRatio: false,
+   },
+   plugins: [
+      require('@tailwindcss/aspect-ratio'),
+      // ...
+   ],
 }

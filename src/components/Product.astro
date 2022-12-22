@@ -1,0 +1,57 @@
+---
+import { currencyFormatter } from "../utils/moneda";
+export interface Props {
+   title: string;
+   category: string;
+   images: string[];
+   price: number;
+}
+
+const { images, category, title, price } = Astro.props;
+---
+
+<article
+   class="flex flex-col w-44 sm:w-60 md:w-80 xl:w-80 mx-auto rounded-lg overflow-hidden group transition"
+>
+   <a
+      href={`/edifimak/products/${title
+         .toLowerCase()
+         .replace(/ /g, "-")
+         .replace(/[^\w-]+/g, "")}`}
+      class="relative block bg-slate-800"
+   >
+      <figure
+         class="overflow-hidden aspect-w-3 aspect-h-2 w-full xl:aspect-w-8 xl:aspect-h-6"
+      >
+         <img
+            src={images[0]}
+            alt="Usuario"
+            class="h-full w-full object-cover object-center group-hover:scale-110 transition duration-300"
+         />
+      </figure>
+      <div class="p-4 space-y-4">
+         <div class="flex items-center justify-between text-center font-medium">
+            <div class="leading-tight text-left">
+               <h5 class="uppercase text-xs text-gray-400">
+                  {category}
+               </h5>
+               <h3 class="text-gray-200 leading-tight text-base mb-3">
+                  {title}
+               </h3>
+               <h4
+                  class="text-white text-base lg:text-lg font-medium rounded-lg self-end"
+               >
+                  {currencyFormatter({ currency: "PEN", value: price })}
+               </h4>
+            </div>
+         </div>
+         <div class="flex flex-col">
+            <button
+               class="py-1.5 px-3 md:px-7 rounded-md shadow bg-sky-600 text-white font-medium hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-300 focus:ring-offset-gray-900 whitespace-nowrap text-center hover:scale-105 transition"
+            >
+               Comprar
+            </button>
+         </div>
+      </div>
+   </a>
+</article>

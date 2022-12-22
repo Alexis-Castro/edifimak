@@ -1,4 +1,6 @@
 ---
+const path = Astro.url.pathname;
+
 ---
 
 <header
@@ -62,11 +64,11 @@
             <h2 class="sr-only" id="header-navigation">Menú de Navegación</h2>
 
             <ul
-               class="font-semibold lg:flex lg:items-center justify-end ml-auto"
+               class="font-semibold group lg:flex lg:items-center justify-end ml-auto"
             >
                <li>
                   <a
-                     class="text-white transition py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center"
+                     class={`transition hover:text-white/75 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center ${path === '/edifimak/' ? 'group-[]:text-sky-400' : 'text-white'}`}
                      href="/edifimak/"
                   >
                      Inicio
@@ -75,7 +77,7 @@
 
                <li>
                   <a
-                     class="text-white transition hover:text-white/75 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center"
+                     class={`transition hover:text-white/75 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center ${path === '/edifimak/nosotros' ? 'group-[]:text-sky-400' : 'text-white'}`}
                      href="/edifimak/nosotros"
                   >
                      Nosotros
@@ -84,7 +86,7 @@
 
                <li>
                   <a
-                     class="text-white transition hover:text-white/75 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center"
+                     class={`transition hover:text-white/75 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center ${path === '/edifimak/tienda' ? 'group-[]:text-sky-400' : 'text-white'}`}
                      href="/edifimak/tienda"
                   >
                      Tienda
@@ -93,7 +95,7 @@
 
                <li>
                   <a
-                     class="text-white transition hover:text-white/75 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center"
+                     class={`transition hover:text-white/75 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center ${path === '/edifimak/contacto' ? 'group-[]:text-sky-400' : 'text-white'}`}
                      href="/edifimak/contacto"
                   >
                      Contacto

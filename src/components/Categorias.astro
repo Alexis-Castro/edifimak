@@ -1,14 +1,19 @@
 ---
+import Category from "./Category.astro";
+
 // fetch api a categorias
+const url = `https://api.escuelajs.co/api/v1/categories`;
+const resp = await fetch(url);
+const data = await resp.json();
+
+// console.log(data);
+
 ---
 
 <div class="w-full mx-auto bg-slate-900">
    <div class="border-t border-[#ffffff1a]"></div>
 </div>
-<section
-   class="py-12 px-6 lg:py-24 lg:px-14 bg-slate-900 "
-   id="categorias"
->
+<section class="py-12 px-1 lg:py-24 lg:px-14 bg-slate-900" id="categorias">
    <div class="container relative space-y-10 2xl:max-w-[1344px]">
       <div class="md:flex items-center justify-center">
          <div class="block basis-0 flex-shrink flex-grow p-2 text-center">
@@ -21,92 +26,17 @@
       </div>
 
       <div
-         class="mx-auto space-y-10 sm:grid sm:grid-cols-2 sm:gap-5 sm:space-y-0 lg:grid-cols-3 justify-items-center"
+         class="mx-auto grid grid-cols-2 gap-x-1 gap-y-7 lg:gap-y-12 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 justify-items-center"
       >
-         <div
-            class="flex flex-col w-72 lg:w-80 mx-auto rounded-lg overflow-hidden hover:scale-105 transition"
-         >
-            <a href="#" class="relative block bg-slate-800">
-               <img
-                  src="https://via.placeholder.com/800"
-                  alt="Usuario"
-                  class="w-full object-cover"
+         {
+            data?.slice(0, 4).map((categories: { name: string; image: string; }) => (
+               <Category
+                  name={ categories.name }
+                  image={ categories.image }
                />
-               <figcaption class="text-base text-center font-medium py-3 text-gray-100">
-                  Contrucción
-               </figcaption>
-            </a>
-         </div>
-         <div
-            class="flex flex-col w-72 lg:w-80 mx-auto rounded-lg overflow-hidden  hover:scale-105 transition"
-         >
-            <a href="#" class="relative block bg-slate-800">
-               <img
-                  src="https://via.placeholder.com/800"
-                  alt="Usuario"
-                  class="w-full object-cover"
-               />
-               <figcaption class="text-base text-center font-medium py-3 text-gray-100">
-                  Pinturas
-               </figcaption>
-            </a>
-         </div>
-         <div
-            class="flex flex-col w-72 lg:w-80 mx-auto rounded-lg overflow-hidden  hover:scale-105 transition"
-         >
-            <a href="#" class="relative block bg-slate-800">
-               <img
-                  src="https://via.placeholder.com/800"
-                  alt="Usuario"
-                  class="w-full object-cover"
-               />
-               <figcaption class="text-base text-center font-medium py-3 text-gray-100">
-                  Grifería
-               </figcaption>
-            </a>
-         </div>
-         <div
-            class="flex flex-col w-72 lg:w-80 mx-auto rounded-lg overflow-hidden  hover:scale-105 transition"
-         >
-            <a href="#" class="relative block bg-slate-800">
-               <img
-                  src="https://via.placeholder.com/800"
-                  alt="Usuario"
-                  class="w-full object-cover"
-               />
-               <figcaption class="text-base text-center font-medium py-3 text-gray-100">
-                  Guantes
-               </figcaption>
-            </a>
-         </div>
-         <div
-            class="flex flex-col w-72 lg:w-80 mx-auto rounded-lg overflow-hidden  hover:scale-105 transition"
-         >
-            <a href="#" class="relative block bg-slate-800">
-               <img
-                  src="https://via.placeholder.com/800"
-                  alt="Usuario"
-                  class="w-full object-cover"
-               />
-               <figcaption class="text-base text-center font-medium py-3 text-gray-100">
-                  Tuberias y Accesorios
-               </figcaption>
-            </a>
-         </div>
-         <div
-            class="flex flex-col w-72 lg:w-80 mx-auto rounded-lg overflow-hidden  hover:scale-105 transition"
-         >
-            <a href="#" class="relative block bg-slate-800">
-               <img
-                  src="https://via.placeholder.com/800"
-                  alt="Usuario"
-                  class="w-full object-cover"
-               />
-               <figcaption class="text-base text-center font-medium py-3 text-gray-100">
-                  Herramientas eléctricas
-               </figcaption>
-            </a>
-         </div>
+              
+            ))
+         }
       </div>
    </div>
 </section>
