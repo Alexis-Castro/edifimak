@@ -119,12 +119,12 @@ console.log(Astro.params);
                      class="isolate inline-flex -space-x-px rounded-md shadow-sm"
                      aria-label="Pagination"
                   >
-                     <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-slate-800 border-gray-700 text-white hover:bg-gray-700" -->
+                     <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-[#019939] border-gray-700 text-white hover:bg-gray-700" -->
                      {
                         page.url.prev ? (
                            <a
                               href={`/edifimak${page.url.prev}`}
-                              class="relative inline-flex items-center rounded-l-md border border-gray-700 bg-slate-800 px-3 py-2 text-sm font-medium text-white hover:bg-gray-700 focus:z-20"
+                              class="relative inline-flex items-center rounded-l-md border border-gray-700 bg-[#1E2A4D] px-3 py-2 text-sm font-medium text-white hover:bg-[#1E2A4D] focus:z-20"
                            >
                               <span class="sr-only">Anterior</span>
 
@@ -160,8 +160,8 @@ console.log(Astro.params);
                               aria-current="page"
                               class:list={[
                                  i == page.currentPage
-                                    ? "z-10 bg-gray-700 border-gray-700 text-white"
-                                    : "bg-slate-800 border-gray-700 text-white hover:bg-gray-700 ",
+                                    ? "z-10 bg-[#1E2A4D] border-[#1E2A4D] text-white"
+                                    : "bg-[#019939] border-[#1E2A4D] text-white hover:bg-[#1E2A4D] ",
                                  "relative inline-flex items-center px-4 py-2 border text-sm font-medium",
                               ]}
                            >
@@ -174,7 +174,7 @@ console.log(Astro.params);
                         page.url.next ? (
                            <a
                               href={`/edifimak${page.url.next}`}
-                              class="relative inline-flex items-center rounded-r-md border border-gray-700 bg-slate-800 px-3 py-2 text-sm font-medium text-white hover:bg-gray-700 focus:z-20"
+                              class="relative inline-flex items-center rounded-r-md border border-gray-700 bg-[#1E2A4D] px-3 py-2 text-sm font-medium text-white hover:bg-[#1E2A4D] focus:z-20"
                            >
                               <span class="sr-only">Siguiente</span>
 

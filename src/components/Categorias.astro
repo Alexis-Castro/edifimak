@@ -18,7 +18,7 @@ const data = await resp.json();
       <div class="md:flex items-center justify-center">
          <div class="block basis-0 flex-shrink flex-grow p-2 text-center">
             <h2
-               class="text-xl lg:text-2xl leading-tight font-bold after:w-10 after:h-1 after:mx-auto after:mt-4 after:bg-sky-600 after:block after:rounded text-white"
+               class="text-xl lg:text-2xl leading-tight font-bold after:w-10 after:h-1 after:mx-auto after:mt-4 after:bg-[#019939] after:block after:rounded text-white"
             >
                Categorías
             </h2>
@@ -29,7 +29,7 @@ const data = await resp.json();
          class="mx-auto grid grid-cols-2 gap-x-1 gap-y-7 lg:gap-y-12 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 justify-items-center"
       >
          {
-            data?.slice(0, 4).map((categories: { name: string; image: string; }) => (
+            data?.slice(0, 5).map((categories: { name: string; image: string; }) => (
                <Category
                   name={ categories.name }
                   image={ categories.image }

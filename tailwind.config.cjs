@@ -7,7 +7,8 @@ module.exports = {
    content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
    theme: {
       fontFamily: {
-         'sans': ['Barlow', ...defaultTheme.fontFamily.sans],
+         // 'sans': ['Barlow', ...defaultTheme.fontFamily.sans],
+         'sans': ['Gotham', ...defaultTheme.fontFamily.sans],
          // 'monospace': ['Inter var', 'monospace'],
       },
       fontSize: {
