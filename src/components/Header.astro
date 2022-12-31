@@ -78,7 +78,7 @@ import edifimak from "../images/edifimak-logo.png";
 
                <li>
                   <a
-                     class={`transition hover:text-white/80 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center ${path === '/edifimak/nosotros' ? 'group-[]:text-[#1E2A4D]' : 'text-gray-100'}`}
+                     class={`transition hover:text-white/80 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center ${path.includes('nosotros') ? 'group-[]:text-[#1E2A4D]' : 'text-gray-100'}`}
                      href="/edifimak/nosotros"
                   >
                      Nosotros
@@ -87,7 +87,7 @@ import edifimak from "../images/edifimak-logo.png";
 
                <li>
                   <a
-                     class={`transition hover:text-white/80 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center ${path === '/edifimak/tienda' ? 'group-[]:text-[#1E2A4D]' : 'text-gray-100'}`}
+                     class={`transition hover:text-white/80 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center ${path.includes('tienda') ? 'group-[]:text-[#1E2A4D]' : 'text-gray-100'}`}
                      href="/edifimak/tienda"
                   >
                      Tienda
@@ -96,7 +96,7 @@ import edifimak from "../images/edifimak-logo.png";
 
                <li>
                   <a
-                     class={`transition hover:text-white/80 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center ${path === '/edifimak/contacto' ? 'group-[]:text-[#1E2A4D]' : 'text-gray-100'}`}
+                     class={`transition hover:text-white/80 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center ${path.includes('contacto') ? 'group-[]:text-[#1E2A4D]' : 'text-gray-100'}`}
                      href="/edifimak/contacto"
                   >
                      Contacto
