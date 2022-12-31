@@ -1,59 +1,46 @@
 ---
-import Layout from "../../../layouts/base.astro";
-import Header from "../../../components/Header.astro";
-import Footer from "../../../components/Footer.astro";
-import {Product} from "../../../components/Product";
+import Layout from "../../layouts/base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import {Product} from "../../components/Product";
 
 export async function getStaticPaths({ paginate }) {
-   // Carga tus datos con fetch(), Astro.glob(), etc.
-   // const urlProducts = `https://api.escuelajs.co/api/v1/products?offset=0&limit=12`;
-   // const urlCategories = `https://api.escuelajs.co/api/v1/categories`;
-   // const [resCategories, respProducts] = await Promise.all([
-   //    fetch(urlCategories),
-   //    fetch(urlProducts),
-   // ]);
-   // const [{ data: categoriess }, { data: products } ] = await Promise.all([
-   //    resCategories.json(),
-   //    respProducts.json()
-   // ]);
 
    const url = `https://api.escuelajs.co/api/v1/products`;
    const resp = await fetch(url);
    const data = await resp.json();
 
    // const productos = products.filter((product) => {});
-   const categoriess = data.flatMap(
-      (post: { category: { name: string } }) => post.category
-   );
+   // const categoriess = data.flatMap(
+   //    (post: { category: { name: string } }) => post.category
+   // );
 
-   return categoriess?.map((category: { name: string }) => {
-      const filteredProducts = data.filter(
-         (product: { category: { name: string } }) =>
-            product.category.name.toLowerCase() === category.name.toLowerCase()
-      );
-      return paginate(filteredProducts, {
-         params: { category: category.name.toLowerCase() },
-         pageSize: 12,
-      });
-   });
+   // return categoriess?.map((category: { name: string }) => {
+   //    const filteredProducts = data.filter(
+   //       (product: { category: { name: string } }) =>
+   //          product.category.name.toLowerCase() === category.name.toLowerCase()
+   //    );
+   //    return paginate(filteredProducts, {
+   //       params: { category: category.name.toLowerCase() },
+   //       pageSize: 12,
+   //    });
+   // });
 
    // Devuelve una colección paginada de rutas para todos los artículos.
-   // return paginate(categories, {
-   //    pageSize: 2,
-   //    // params: {
-   //    //    category: categories.category,
-   //    // },
-   // });
+   return paginate(data, {
+      pageSize: 12,
+      // params: {
+      //    category: categories.category,
+      // },
+   });
 }
 
 const { page } = Astro.props;
-const { category } = Astro.params;
 
 console.log(Astro.props);
-console.log(Astro.params);
 ---
 
-<Layout title={`Edifimak - ${category.toUpperCase()}`} bodyClass="bg-slate-900">
+<Layout title={`Edifimak - Tienda`} bodyClass="bg-slate-900">
    <Header />
 
    <section class="pt-16 bg-contact bg-center bg-cover bg-no-repeat">
@@ -64,7 +51,7 @@ console.log(Astro.params);
             <div class="md:flex items-center justify-center">
                <div class="text-center">
                   <h2 class="text-2xl font-bold uppercase text-white">
-                     {category}
+                     Tienda
                   </h2>
                </div>
             </div>
@@ -97,7 +84,7 @@ console.log(Astro.params);
          </div>
          
          <div
-            class="flex items-center justify-center sm:justify-between border-t border-gray-500 px-4 py-3 sm:px-6"
+            class="flex items-center flex-wrap justify-center sm:justify-between border-t border-gray-500 px-4 py-3 sm:px-6"
          >
             
             <div
@@ -116,7 +103,7 @@ console.log(Astro.params);
                </div>
                <div>
                   <nav
-                     class="isolate inline-flex -space-x-px rounded-md shadow-sm"
+                     class="isolate inline-flex flex-wrap -space-x-px rounded-md shadow-sm"
                      aria-label="Pagination"
                   >
                      <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-[#019939] border-gray-700 text-white hover:bg-gray-700" -->
@@ -146,15 +133,16 @@ console.log(Astro.params);
                      }
                      <!-- lista de páginas -->
                      {
+
                         Array.from(
                            { length: page.lastPage },
                            (_, index) => index + 1
                         ).map((i) => (
                            <a
                               href={
-                                 "/edifimak/" +
+                                 "/edifimak/tienda" +
                                  // page.url.current +
-                                 "category/" + category +
+                                 // "category/" + category +
                                  (i > 1 ? "/"+i : "")
                               }
                               aria-current="page"

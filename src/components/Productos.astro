@@ -1,8 +1,8 @@
 ---
-import Product from "./Product.astro";
+import { Product } from "./Product";
 
 // fetch api a productos
-const url = `https://api.escuelajs.co/api/v1/products?offset=0&limit=12`;
+const url = `https://api.escuelajs.co/api/v1/products?offset=0&limit=20`;
 const resp = await fetch(url);
 const data = await resp.json();
 
@@ -22,7 +22,7 @@ const data = await resp.json();
       </div>
 
       <div
-         class="mx-auto grid grid-cols-2 gap-x-1 gap-y-7 lg:gap-y-12 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 justify-items-center"
+         class="mx-auto grid grid-cols-2 gap-x-1 gap-y-7 lg:gap-y-12 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 justify-items-center" id="products"
       >
          {
             data?.map(
@@ -32,7 +32,7 @@ const data = await resp.json();
                   price: number;
                   images: string[];
                }) => (
-                  <Product
+                  <Product client:load
                      category={products.category.name}
                      title={products.title}
                      price={products.price}
