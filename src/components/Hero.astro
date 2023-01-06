@@ -5,6 +5,7 @@ import contacto from "../images/contacto.webp";
 import cta from "../images/cta.webp";
 import ferreHeaderAvif from "../images/ferre-inicio.avif";
 
+// import "../libs/glide.min.js";
 import "../libs/glide.core.min.css";
 import "../libs/glide.theme.min.css";
 ---
@@ -324,9 +325,12 @@ import "../libs/glide.theme.min.css";
    </div> -->
 </section>
 
-<script src="../libs/glide.min.js"></script>
+<!-- <script src="../libs/glide.min.js"></script> -->
 
-<script type="module">
+<script >
+   import Glide from '@glidejs/glide'
+
+// new Glide('.glide').mount()
    new Glide(".glide", {
       type: "carousel",
       startAt: 0,
