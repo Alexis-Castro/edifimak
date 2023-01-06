@@ -372,6 +372,11 @@
   resolved "https://registry.yarnpkg.com/@fontsource/barlow/-/barlow-4.5.9.tgz#e3b18084e839c1c0a5ac30f7fef6737cd720f6df"
   integrity sha512-Nzg7bpw6raZtNdHwvLIt6ue/Gas/tpsNyf7zrRvVdV38iOrtOip2aabO3lexEyiYkKjKrlqAjEyAtTrC2XfkRg==
 
+"@glidejs/glide@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@glidejs/glide/-/glide-3.6.0.tgz#d13fd57de8473a2d86022ac601b5cbc98c9dcfe5"
+  integrity sha512-47Aa+JmYjY4xTFpTtYCwrqirmI1arnp1UZETwtWpbTPisXUAuxrdJxKJLH8KHFWMsSrLi9+AcfyfzDIuO75rEA==
+
 "@jridgewell/gen-mapping@^0.1.0":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@jridgewell/gen-mapping/-/gen-mapping-0.1.1.tgz#e5d2e450306a9491e3bd77e323e38d7aff315996"

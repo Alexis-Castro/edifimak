@@ -1,104 +1,336 @@
 ---
 import ferreHeader from "../images/ferre-inicio.jpg";
 import ferreHeaderWebp from "../images/ferre-inicio.webp";
+import contacto from "../images/contacto.webp";
+import cta from "../images/cta.webp";
 import ferreHeaderAvif from "../images/ferre-inicio.avif";
+
+import "../libs/glide.core.min.css";
+import "../libs/glide.theme.min.css";
 ---
 
 <section
-   class="pt-16 bg-slate-900 md:flex items-stretch lg:pb-12 min-h-screen pb-8 relative sm:pb-12 overflow-hidden"
+   class="pt-16 bg-slate-900 flex flex-col items-stretch xl:min-h-screen justify-between relative overflow-hidden"
 >
    <div
-      class="hero grow shrink-0 py-12 lg:py-36 lg:px-16 flex items-center"
+      class="px-3 md:px-6 lg:py-36 grow shrink-0 py-10 lg:px-16 flex items-center relative"
    >
-      <div class="container grow 2xl:max-w-[1344px]">
-            <div
-               class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl lg:grid lg:grid-cols-2 lg:gap-24"
-            >
-               <div>
-                  <h3 class="text-gray-300">Ferretería</h3>
-                  <h1 class="text-2xl lg:text-3xl font-bold uppercase text-white">
-                     Edifimak
-                  </h1>
-                  
-                  <div class="mt-5 md:mt-6 flex gap-2 flex-col sm:flex-row">
-                     <a
-                        class="py-2.5 px-4 md:px-7 rounded-md shadow bg-[#019939] text-white font-medium hover:bg-[#00762b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-300 focus:ring-offset-gray-900 whitespace-nowrap sm:w-min text-center text-base transition"
-                        href="#categorias">Más info</a
-                     >
-                  </div>
-               </div>
+      <div class="container 2xl:max-w-[1344px]">
+         <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+               <ul class="glide__slides">
+                  <li class="glide__slide">
+                     <div class="lg:flex justify-center items-center">
+                        <div class="block basis-0 flex-shrink flex-grow p-2">
+                           <!-- <div>
+                              <h3
+                                 class="text-white font-semibold leading-tight text-xl lg:text-2xl 2xl:text-3xl mb-2"
+                              >
+                                 Macbook Pro M2
+                              </h3>
+                              <p class="text-gray-50 mb-10">
+                                 Lorem ipsum dolor sit amet consectetur adipisicing
+                                 elit. Iusto dicta tempore ducimus sequi
+                              </p>
+                              <p class="text-white text-lg font-bold mb-2">
+                                 S/ 1,999.00
+                              </p>
+
+                           </div>
+                           <div
+                              class="flex gap-2 flex-col lg:flex-row"
+                              id="efe"
+                           >
+                              <a
+                                 class="py-2.5 px-4 md:px-7 rounded-md shadow bg-[#019939] text-white font-medium hover:bg-[#00762b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-300 focus:ring-offset-gray-900 whitespace-nowrap lg:w-min text-center text-base transition"
+                                 href="#">Comprar</a
+                              >
+                           </div> -->
+                           <picture>
+                              
+                              <source
+                                 srcset={ferreHeaderWebp}
+                                 media="(min-width: 768px)"
+                                 type="image/webp"
+                              />
+                              <img
+                                 src="https://images.unsplash.com/photo-1631856956423-2b95dae0ba74?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                                 class="w-full rounded-md shadow-xl ring-8 ring-gray-700 ring-opacity-90 lg:h-full lg:max-w-7xl"
+                                 width="2000"
+                                 height="1058"
+                                 alt=""
+                              />
+                           </picture>
+                        </div>
+                        <!-- <div class="block basis-0 flex-shrink flex-grow p-2">
+                           <figure class="relative">
+                              <picture>
+                                 <source
+                                    srcset={ferreHeaderWebp}
+                                    type="image/webp"
+                                 />
+                                 <img
+                                    class="w-full rounded-md shadow-xl ring-8 ring-gray-700 ring-opacity-90"
+                                    src={ferreHeader}
+                                    alt="Edifimak"
+                                    width="2000"
+                                    height="1058"
+                                 />
+                              </picture>
+                           </figure>
+                        </div> -->
+                     </div>
+                  </li>
+                  <li class="glide__slide">
+                     <div class="lg:flex justify-center items-center">
+                        <div class="block basis-0 flex-shrink flex-grow p-2">
+                           <picture>
+                              
+                              <source
+                                 srcset={contacto}
+                                 media="(min-width: 768px)"
+                                 type="image/webp"
+                              />
+                              <img
+                                 src="https://images.unsplash.com/photo-1631856954092-cb50fc7ac17a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                                 class="w-full rounded-md shadow-xl ring-8 ring-gray-700 ring-opacity-90 lg:h-full lg:max-w-7xl"
+                                 width="2000"
+                                 height="1058"
+                                 alt=""
+                              />
+                           </picture>
+                           <!-- <div>
+                              <h3
+                                 class="text-white font-semibold leading-tight text-xl lg:text-2xl 2xl:text-3xl mb-2"
+                              >
+                                 Electronic Steel Table
+                              </h3>
+                              <p class="text-gray-50 mb-10">
+                                 Lorem ipsum dolor sit amet consectetur adipisicing
+                                 elit. Iusto dicta tempore ducimus sequi
+                              </p>
+                              <p class="text-white text-lg font-bold mb-2">
+                                 S/ 1,999.00
+                              </p>
+                              
+                           </div>
+                           <div
+                              class="flex gap-2 flex-col lg:flex-row"
+                              id="efe"
+                           >
+                              <a
+                                 class="py-2.5 px-4 md:px-7 rounded-md shadow bg-[#019939] text-white font-medium hover:bg-[#00762b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-300 focus:ring-offset-gray-900 whitespace-nowrap lg:w-min text-center text-base transition"
+                                 href="#">Comprar</a
+                              >
+                           </div> -->
+                        </div>
+                        <!-- <div class="block basis-0 flex-shrink flex-grow p-2">
+                           <figure class="relative">
+                              <picture>
+                                 <img
+                                    class="w-full rounded-md shadow-xl ring-8 ring-gray-700 ring-opacity-90"
+                                    src={contacto}
+                                    alt="Edifimak"
+                                    width="2000"
+                                    height="1058"
+                                 />
+                              </picture>
+                           </figure>
+                        </div> -->
+                     </div>
+                  </li>
+                  <li class="glide__slide">
+                     <div class="lg:flex justify-center items-center">
+                        <div class="block basis-0 flex-shrink flex-grow p-2">
+                           <picture>
+                             
+                              <source
+                                 srcset="https://images.unsplash.com/photo-1631856955350-77f4023dff2b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80"
+                                 media="(min-width: 768px)"
+                                 type="image/webp"
+                              />
+                              <img
+                                 src="https://images.unsplash.com/photo-1601598838108-5019bf3ea4a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                                 class="w-full rounded-md shadow-xl ring-8 ring-gray-700 ring-opacity-90 lg:h-full lg:max-w-7xl"
+                                 loading="lazy"
+                                 width="2000"
+                                 height="1058"
+                                 alt=""
+                              />
+                           </picture>
+                           <!-- <div>
+                              <h3
+                                 class="text-white font-semibold leading-tight text-xl lg:text-2xl 2xl:text-3xl mb-2"
+                              >
+                                 Fantastic Granite Salad
+                              </h3>
+                              <p class="text-gray-50 mb-10">
+                                 Lorem ipsum dolor sit amet consectetur adipisicing
+                                 elit. Iusto dicta tempore ducimus sequi
+                              </p>
+                              <p class="text-white text-lg font-bold mb-2">
+                                 S/ 1,999.00
+                              </p>
+                              
+                           </div>
+                           <div
+                              class="flex gap-2 flex-col lg:flex-row"
+                              id="efe"
+                           >
+                              <a
+                                 class="py-2.5 px-4 md:px-7 rounded-md shadow bg-[#019939] text-white font-medium hover:bg-[#00762b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-300 focus:ring-offset-gray-900 whitespace-nowrap lg:w-min text-center text-base transition"
+                                 href="#">Comprar</a
+                              >
+                           </div> -->
+                        </div>
+                        <!-- <div class="block basis-0 flex-shrink flex-grow p-2">
+                           <figure class="relative">
+                              <picture>
+                                 <img
+                                    class="w-full rounded-md shadow-xl ring-8 ring-gray-700 ring-opacity-90"
+                                    src={cta}
+                                    alt="Edifimak"
+                                    width="2000"
+                                    height="1058"
+                                 />
+                              </picture>
+                           </figure>
+                        </div> -->
+                     </div>
+                  </li>
+               </ul>
             </div>
 
-            <div class="sm:mx-auto sm:max-w-3xl sm:px-6">
-               <div
-                  class="py-12 sm:relative sm:mt-12 sm:py-16 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2"
+            <div class="glide__arrows hidden md:block" data-glide-el="controls">
+               <button
+                  class="glide__arrow glide__arrow--left lg:-left-9"
+                  data-glide-dir="<"
                >
-                  <div class="hidden sm:block">
-                     <svg
-                        class="absolute top-8 right-1/2 -mr-3 lg:m-0 lg:left-0"
-                        width="404"
-                        height="392"
-                        fill="none"
-                        viewBox="0 0 404 392"
-                     >
-                        <defs>
-                           <pattern
-                              id="837c3e70-6c3a-44e6-8854-cc48c737b659"
+                  <svg
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="40"
+                     height="40"
+                     preserveAspectRatio="xMidYMid meet"
+                     viewBox="0 0 24 24"
+                     ><path
+                        fill="currentColor"
+                        d="M15.125 21.1L6.7 12.7q-.15-.15-.212-.325q-.063-.175-.063-.375t.063-.375q.062-.175.212-.325l8.425-8.425q.35-.35.875-.35t.9.375q.375.375.375.875t-.375.875L9.55 12l7.35 7.35q.35.35.35.862q0 .513-.375.888t-.875.375q-.5 0-.875-.375Z"
+                     ></path>
+                  </svg>
+               </button>
+               <button
+                  class="glide__arrow glide__arrow--right"
+                  data-glide-dir=">"
+               >
+                  <svg
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="40"
+                     height="40"
+                     preserveAspectRatio="xMidYMid meet"
+                     viewBox="0 0 24 24"
+                     ><path
+                        fill="currentColor"
+                        d="M7.15 21.1q-.375-.375-.375-.888q0-.512.375-.887L14.475 12l-7.35-7.35q-.35-.35-.35-.875t.375-.9q.375-.375.888-.375q.512 0 .887.375l8.4 8.425q.15.15.213.325q.062.175.062.375t-.062.375q-.063.175-.213.325L8.9 21.125q-.35.35-.862.35q-.513 0-.888-.375Z"
+                     ></path>
+                  </svg>
+               </button>
+            </div>
+
+            <div class="glide__bullets" data-glide-el="controls[nav]">
+               <button class="glide__bullet" data-glide-dir="=0"></button>
+               <button class="glide__bullet" data-glide-dir="=1"></button>
+               <button class="glide__bullet" data-glide-dir="=2"></button>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- <div class="hero grow shrink-0 py-12 lg:py-36 lg:px-16 flex items-center">
+      <div class="container grow 2xl:max-w-[1344px]">
+         <div
+            class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl lg:grid lg:grid-cols-2 lg:gap-24"
+         >
+            <div>
+               <h3 class="text-gray-300">Ferretería</h3>
+               <h1 class="text-2xl lg:text-3xl font-bold uppercase text-white">
+                  Edifimak
+               </h1>
+
+               <div class="mt-5 md:mt-6 flex gap-2 flex-col sm:flex-row">
+                  <a
+                     class="py-2.5 px-4 md:px-7 rounded-md shadow bg-[#019939] text-white font-medium hover:bg-[#00762b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-300 focus:ring-offset-gray-900 whitespace-nowrap sm:w-min text-center text-base transition"
+                     href="#categorias">Más info</a
+                  >
+               </div>
+            </div>
+         </div>
+
+         <div class="sm:mx-auto sm:max-w-3xl sm:px-6">
+            <div
+               class="py-12 sm:relative sm:mt-12 sm:py-16 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2"
+            >
+               <div class="hidden sm:block">
+                  <svg
+                     class="absolute top-8 right-1/2 -mr-3 lg:m-0 lg:left-0"
+                     width="404"
+                     height="392"
+                     fill="none"
+                     viewBox="0 0 404 392"
+                  >
+                     <defs>
+                        <pattern
+                           id="837c3e70-6c3a-44e6-8854-cc48c737b659"
+                           x="0"
+                           y="0"
+                           width="20"
+                           height="20"
+                           patternUnits="userSpaceOnUse"
+                        >
+                           <rect
                               x="0"
                               y="0"
-                              width="20"
-                              height="20"
-                              patternUnits="userSpaceOnUse"
-                           >
-                              <rect
-                                 x="0"
-                                 y="0"
-                                 width="4"
-                                 height="4"
-                                 class="text-gray-600"
-                                 fill="currentColor"></rect>
-                           </pattern>
-                        </defs>
-                        <rect
-                           width="404"
-                           height="392"
-                           fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)"
-                        ></rect>
-                     </svg>
-                  </div>
-                  <div
-                     class="relative pl-4 -mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full lg:pl-12"
-                  >
-                     <picture>
-                        <source srcset={ferreHeaderAvif} type="image/avif" />
-                        <source srcset={ferreHeaderWebp} type="image/webp" />
-                        <img
-                           class="w-full rounded-md shadow-xl ring-8 ring-gray-700 ring-opacity-90 lg:h-full lg:w-auto lg:max-w-none"
-                           src={ferreHeader}
-                           alt="Edifimak"
-                           width="2000"
-                           height="1058"
-                        />
-                     </picture>
-                  </div>
+                              width="4"
+                              height="4"
+                              class="text-gray-600"
+                              fill="currentColor"></rect>
+                        </pattern>
+                     </defs>
+                     <rect
+                        width="404"
+                        height="392"
+                        fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)"
+                     ></rect>
+                  </svg>
                </div>
-            </div>
-
-            <!-- <div class="block basis-0 flex-shrink flex-grow p-2">
-               <figure class="relative">
+               <div
+                  class="relative pl-4 -mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full lg:pl-12"
+               >
                   <picture>
                      <source srcset={ferreHeaderAvif} type="image/avif" />
                      <source srcset={ferreHeaderWebp} type="image/webp" />
                      <img
-                        class="w-full rounded-md shadow-xl ring-8 ring-gray-700 ring-opacity-90 lg:h-full lg:w-auto"
-                        width="2000"
-                        height="1058"
+                        class="w-full rounded-md shadow-xl ring-8 ring-gray-700 ring-opacity-90 lg:h-full lg:w-auto lg:max-w-none"
                         src={ferreHeader}
                         alt="Edifimak"
+                        width="2000"
+                        height="1058"
                      />
                   </picture>
-               </figure>
-            </div> -->
+               </div>
+            </div>
+         </div>
+
       </div>
-   </div>
+   </div> -->
 </section>
+
+<script src="../libs/glide.min.js"></script>
+
+<script type="module">
+   new Glide(".glide", {
+      type: "carousel",
+      startAt: 0,
+      perView: 1,
+      // dragThreshold: false,
+   }).mount();
+</script>

@@ -1,19 +1,33 @@
 ---
 import Layout from "../layouts/base.astro";
 import Header from "../components/Header.astro";
-import HeroContact from "../components/HeroContact.astro";
 import InfoContact from "../components/InfoContact.astro";
 import Ubicacion from "../components/Ubicacion.astro";
 import Footer from "../components/Footer.astro";
-
 ---
 
 <Layout title="Edifimak - Contacto" bodyClass="bg-slate-900">
-	<Header />
-	<HeroContact />
-	<InfoContact />
-	<Ubicacion />
+   <Header />
 	
-	<Footer />
+   <section class="pt-16 bg-contact bg-center bg-cover bg-no-repeat">
+      <div
+         class="hero grow shrink-0 px-6 py-32 md:py-36 md:px-16 flex items-center"
+      >
+         <div class="container grow 2xl:max-w-[1344px] md:py-16">
+            <div class="md:flex items-center justify-center">
+               <div class="text-center">
+                  <h2 class="text-2xl font-bold uppercase text-white">
+                     Contacto
+                  </h2>
+               </div>
 
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <InfoContact />
+   <Ubicacion />
+
+   <Footer />
 </Layout>

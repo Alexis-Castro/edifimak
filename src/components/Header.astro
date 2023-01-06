@@ -1,7 +1,8 @@
 ---
 const path = Astro.url.pathname;
 import edifimak from "../images/edifimak-logo.png";
-// import edifimakWebp from "../images/edifimak-logo.webp";
+import edifimakWebp from "../images/edifimak-logo.webp";
+import edifimakAvif from "../images/edifimak-logo.avif";
 ---
 
 <header
@@ -9,7 +10,7 @@ import edifimak from "../images/edifimak-logo.png";
 >
    <nav class="group navbar ">
       <div
-         class="container max-lg:group-[.navbar]:block lg:px-8 relative grow group-[.navbar]:flex group-[.navbar]:items-stretch 2xl:max-w-[1344px]"
+         class="container max-lg:group-[.navbar]:block relative grow group-[.navbar]:flex group-[.navbar]:items-stretch 2xl:max-w-[1344px]"
       >
          <div class="flex items-stretch shrink-0 min-h-[4rem]">
             <a
@@ -17,16 +18,18 @@ import edifimak from "../images/edifimak-logo.png";
                href="/edifimak/"
             >
                <picture>
-                  <!-- <source
-                     srcset={edifimak}
+                  <source
+                     srcset={edifimakAvif}
                      type="image/avif"
-                  /> -->
-                  <!-- <source
+                  />
+                  <source
                      srcset={edifimakWebp}
                      type="image/webp"
-                  /> -->
+                  />
                   <img
-                     class="max-h-12"
+                     class="max-h-40"
+                     width="150"
+                     height="47"
                      src={edifimak}
                      alt="Edifimak - Todo en un solo lugar"
                   />
@@ -36,7 +39,7 @@ import edifimak from "../images/edifimak-logo.png";
             <div class="flex items-center gap-3 ml-auto lg:hidden px-3">
                <button
                   data-target="navbar-mobile"
-                  class="inline-flex items-center p-2 text-sm text-gray-500 rounded-md lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 navbar-burger"
+                  class="inline-flex items-center p-2 text-sm text-[#1E2A4D] rounded-md lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#4d5b87] navbar-burger"
                   aria-controls="navbar-default"
                   aria-expanded="false"
                   aria-label="menu"
@@ -69,25 +72,25 @@ import edifimak from "../images/edifimak-logo.png";
             >
                <li>
                   <a
-                     class={`transition hover:text-white/80 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center ${path === '/edifimak/' ? 'group-[]:text-[#1E2A4D]' : 'text-gray-100'}`}
+                     class={`transition hover:text-white/80 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center ${path === '/edifimak/' ? 'group-[]:text-[#1E2A4D] font-extrabold' : 'text-gray-100'}`}
                      href="/edifimak/"
                   >
                      Inicio
                   </a>
                </li>
-
+               
                <li>
                   <a
-                     class={`transition hover:text-white/80 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center ${path.includes('nosotros') ? 'group-[]:text-[#1E2A4D]' : 'text-gray-100'}`}
-                     href="/edifimak/nosotros"
+                     class={`transition hover:text-white/80 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center ${path.includes('categorias') ? 'group-[]:text-[#1E2A4D] font-extrabold' : 'text-gray-100'}`}
+                     href="/edifimak/categorias"
                   >
-                     Nosotros
+                     Categorías
                   </a>
                </li>
 
                <li>
                   <a
-                     class={`transition hover:text-white/80 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center ${path.includes('tienda') ? 'group-[]:text-[#1E2A4D]' : 'text-gray-100'}`}
+                     class={`transition hover:text-white/80 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center ${path.includes('tienda') ? 'group-[]:text-[#1E2A4D] font-extrabold' : 'text-gray-100'}`}
                      href="/edifimak/tienda"
                   >
                      Tienda
@@ -96,7 +99,16 @@ import edifimak from "../images/edifimak-logo.png";
 
                <li>
                   <a
-                     class={`transition hover:text-white/80 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center ${path.includes('contacto') ? 'group-[]:text-[#1E2A4D]' : 'text-gray-100'}`}
+                     class={`transition hover:text-white/80 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center ${path.includes('nosotros') ? 'group-[]:text-[#1E2A4D] font-extrabold' : 'text-gray-100'}`}
+                     href="/edifimak/nosotros"
+                  >
+                     Nosotros
+                  </a>
+               </li>
+
+               <li>
+                  <a
+                     class={`transition hover:text-white/80 py-2 px-3 uppercase block shrink-0 grow-0 relative md:flex md:items-center ${path.includes('contacto') ? 'group-[]:text-[#1E2A4D] font-extrabold' : 'text-gray-100'}`}
                      href="/edifimak/contacto"
                   >
                      Contacto
@@ -108,7 +120,7 @@ import edifimak from "../images/edifimak-logo.png";
    </nav>
 </header>
 
-<script type="module">
+<script is:inline>
    const $navbarBurger = document.querySelector(".navbar-burger");
 
    $navbarBurger.addEventListener("click", () => {

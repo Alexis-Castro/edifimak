@@ -1,0 +1,47 @@
+---
+import Layout from "../../layouts/base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import Category from "../../components/Category.astro";
+
+// fetch api a categorias
+const url = `https://api.escuelajs.co/api/v1/categories`;
+const resp = await fetch(url);
+const data = await resp.json();
+---
+
+<Layout title="Edifimak - Categorias" bodyClass="bg-slate-900">
+   <Header />
+
+   <section class="pt-16 bg-contact bg-center bg-cover bg-no-repeat">
+      <div
+         class="hero grow shrink-0 px-6 py-24 md:py-36 md:px-16 flex items-center"
+      >
+         <div class="container grow 2xl:max-w-[1344px]">
+            <div class="md:flex items-center justify-center">
+               <div class="text-center">
+                  <h2 class="text-2xl font-bold uppercase text-white">
+                     Categorías
+                  </h2>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+	<section class="py-12 px-1 lg:py-24 lg:px-14 bg-slate-900">
+		<div
+			class="mx-auto grid grid-cols-2 gap-x-1 gap-y-7 lg:gap-y-12 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 justify-items-center"
+		>
+			{
+				data?.map((categories: { name: string; image: string }) => (
+						<Category name={categories.name} image={categories.image} />
+					))
+			}
+		</div>
+
+	</section>
+
+
+   <Footer />
+</Layout>
