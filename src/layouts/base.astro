@@ -44,8 +44,8 @@ const { title, bodyClass } = Astro.props;
 
    @font-face {
       font-family: "Gotham";
-      src: url("/edifimak/fonts/GothamLight.woff2") format("woff2");
-      font-weight: 300;
+      src: url("/edifimak/fonts/GothamMedium.woff2") format("woff2");
+      font-weight: 500;
       font-style: normal;
       font-display: swap;
    }
@@ -65,5 +65,15 @@ const { title, bodyClass } = Astro.props;
 
    .ReactModal__Overlay--before-close {
       opacity: 0;
+   }
+   #products {
+      display: grid;
+      grid-template-columns: repeat( auto-fit,minmax(200px,1fr) );
+   }
+   @media (min-width: 1024px) {
+      #products {
+         grid-template-columns: repeat( auto-fit,minmax(270px,1fr) );
+      }
+
    }
 </style>
