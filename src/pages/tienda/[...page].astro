@@ -6,9 +6,9 @@ import {Product} from "../../components/Product";
 
 export async function getStaticPaths({ paginate }) {
 
-   const url = `https://api.escuelajs.co/api/v1/products`;
+   const url = `https://edifimaksystem.com/Api_Edifimak/producto/axeijclkxcdz`;
    const resp = await fetch(url);
-   const data = await resp.json();
+   const { data } = await resp.json();
 
    // const productos = products.filter((product) => {});
    // const categoriess = data.flatMap(
@@ -27,7 +27,7 @@ export async function getStaticPaths({ paginate }) {
    // });
 
    // Devuelve una colección paginada de rutas para todos los artículos.
-   return paginate(data, {
+   return paginate(data.produc, {
       pageSize: 12,
       // params: {
       //    category: categories.category,
@@ -62,21 +62,21 @@ console.log(Astro.props);
    <section class="py-12 px-1 lg:py-24 lg:px-14 bg-slate-900">
       <div class="container grow 2xl:max-w-[1344px] space-y-10">
          <div
-            class="mx-auto grid grid-cols-2 gap-x-1 gap-y-7 lg:gap-y-12 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 justify-items-center" id="products"
+            class="mx-auto w-full grid gap-x-3 gap-y-6 lg:gap-y-12 lg:gap-x-6 justify-center" id="products"
          >
             {
                page.data?.map(
                   (products: {
-                     category: { name: string };
+                     category: string;
                      title: string;
-                     price: number;
-                     images: string[];
+                     precio: number;
+                     img: string;
                   }) => (
                      <Product client:load
-                        category={products.category.name}
+                        category={'category'}
                         title={products.title}
-                        price={products.price}
-                        images={products.images}
+                        price={products.precio}
+                        image={products.img}
                      />
                   )
                )
