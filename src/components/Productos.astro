@@ -2,11 +2,11 @@
 import { Product } from "./Product";
 
 // fetch api a productos
-const url = `https://api.escuelajs.co/api/v1/products?offset=0&limit=20`;
+const url = `https://edifimaksystem.com/Api_Edifimak/producto/axeijclkxcdz`;
 const resp = await fetch(url);
-const data = await resp.json();
+const { data } = await resp.json();
 
-// console.log(products);
+// console.log(data.produc);
 ---
 
 <section class="py-12 px-1 lg:py-24 lg:px-14 bg-slate-900">
@@ -22,21 +22,21 @@ const data = await resp.json();
       </div>
 
       <div
-         class="mx-auto grid grid-cols-2 gap-x-1 gap-y-7 lg:gap-y-12 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 justify-items-center" id="products"
+         class="mx-auto w-full grid gap-x-3 gap-y-6 lg:gap-y-12 lg:gap-x-6 justify-center" id="products"
       >
          {
-            data?.map(
+            data.produc?.slice(0, 16).map(
                (products: {
-                  category: { name: string };
+                  category: string;
                   title: string;
-                  price: number;
-                  images: string[];
+                  precio: number;
+                  img: string;
                }) => (
                   <Product client:load
-                     category={products.category.name}
+                     category={'category'}
                      title={products.title}
-                     price={products.price}
-                     images={products.images}
+                     price={products.precio}
+                     image={products.img}
                   />
                )
             )
@@ -44,3 +44,7 @@ const data = await resp.json();
       </div>
    </div>
 </section>
+
+<style is:global>
+   
+</style>
