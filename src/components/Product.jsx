@@ -1,28 +1,28 @@
 import { useState } from "react";
 import Modal from 'react-modal';
-import { currencyFormatter } from "../utils/moneda";
+import { capitalizarPrimeraLetra, currencyFormatter } from "../utils/utiles";
 
 Modal.setAppElement('#products');
 
-export const Product = ({ images, category, title, price }) => {
+export const Product = ({ image, category = '', title, price }) => {
 
    const [modalIsOpen, setIsOpen] = useState(false);
 
    return (
       <>
          <article
-            className="flex flex-col w-44 sm:w-60 md:w-80 xl:w-80 mx-auto rounded-lg overflow-hidden group transition"
+            className="flex flex-col w-full mx-auto rounded-lg overflow-hidden group transition"
          >
-            <a
+            <div
                // href="#"
-               onClick={() => setIsOpen(true)}
-               className="relative block bg-[#1E2A4D] rounded-lg cursor-pointer"
+               // onClick={() => setIsOpen(true)}
+               className="relative block bg-[#1E2A4D] rounded-lg "
             >
                <figure
-                  className="overflow-hidden aspect-w-3 aspect-h-2 w-full xl:aspect-w-8 xl:aspect-h-6"
+                  className="overflow-hidden w-full"
                >
                   <img
-                     src={images[0]}
+                     src={image}
                      alt="Usuario"
                      className="h-full w-full object-cover object-center group-hover:scale-110 transition duration-300"
                   />
@@ -30,21 +30,25 @@ export const Product = ({ images, category, title, price }) => {
                <div className="p-4 space-y-4">
                   <div className="flex items-center justify-between text-center font-medium">
                      <div className="leading-tight text-left">
-                        <h5 className="uppercase text-xs text-[#019939] font-semibold">
+                        <h5 className="uppercase text-xs text-[#019939] font-semibold my-1">
                            {category}
                         </h5>
                         <h3 className="text-gray-50 leading-tight text-base mb-4">
                            {title}
+                           {/* { capitalizarPrimeraLetra( title ) } */}
                         </h3>
                         <h4
-                           className="text-white text-base font-extrabold rounded-lg self-end"
+                           className="text-white text-base font-bold rounded-lg self-end"
                         >
                            {currencyFormatter({ currency: "PEN", value: price })}
                         </h4>
                      </div>
                   </div>
+                  <div className="flex items-center space-x-2 border-gray-600">
+                     <button onClick={() => setIsOpen(true)} type="button" className="text-white focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-[#019939] hover:bg-[#018c34] focus:ring-[#008430] w-full">Más información</button>
+                  </div>
                </div>
-            </a>
+            </div>
             {/* <div className="flex flex-col px-4 pb-4 bg-[#1E2A4D]">
                <button
                   className="py-1.5 px-3 md:px-7 rounded-md shadow bg-[#019939] text-white font-medium hover:bg-[#00762b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-300 focus:ring-offset-gray-900 whitespace-nowrap text-center hover:scale-105 transition"
@@ -77,12 +81,12 @@ export const Product = ({ images, category, title, price }) => {
                   <div className="block basis-0 flex-shrink flex-grow p-3">
                      <figure className="w-full">
                         <img
-                           src={images[0]}
+                           src={image}
                            alt="Producto image"
                            className="h-full w-full object-cover object-center transition duration-300 ring-8 ring-gray-700 ring-opacity-90 rounded-md shadow-xl"
                         />
                      </figure>
-                     
+
                   </div>
                   <div className="block basis-0 flex-shrink flex-grow p-3">
                      <h2 className="font-bold text-xl leading-tight text-[#019939] mb-1">{title}</h2>
