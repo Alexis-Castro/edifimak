@@ -1,19 +1,29 @@
 ---
 export interface Props {
-	name: string,
-	image: string,
+   name: string;
+   image: string;
 }
 
 const { image, name } = Astro.props;
-
 ---
 
-<div class="flex flex-col w-44 sm:w-60 md:w-80 xl:w-80 mx-auto rounded-lg overflow-hidden hover:scale-105 transition">
-   <a href={`/edifimak/categorias/${name.toLowerCase().toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '')}`} class="relative block bg-[#019939]">
-      <figure class="overflow-hidden aspect-w-3 aspect-h-2 w-full xl:aspect-w-8 xl:aspect-h-6">
+<div
+   class="flex flex-col mx-auto w-full rounded-lg overflow-hidden hover:scale-105 transition"
+>
+   <a
+      href={`/edifimak/categorias/${name
+         .toLowerCase()
+         .toLowerCase()
+         .replace(/ /g, "-")
+         .replace(/[^\w-]+/g, "")}`}
+      class="relative block bg-[#019939]"
+   >
+      <figure class="overflow-hidden w-full">
          <img
             src={image}
-            alt="Usuario"
+            alt={name}
+            width="318"
+            height="318"
             class="h-full w-full object-cover object-center"
          />
       </figure>
