@@ -5,9 +5,9 @@ import Footer from "../../components/Footer.astro";
 import Category from "../../components/Category.astro";
 
 // fetch api a categorias
-const url = `https://api.escuelajs.co/api/v1/categories`;
+const url = `https://edifimaksystem.com/Api_Edifimak/categoria/axeijclkxcdz`;
 const resp = await fetch(url);
-const data = await resp.json();
+const { data } = await resp.json();
 ---
 
 <Layout title="Edifimak - Categorias" bodyClass="bg-slate-900">
@@ -30,18 +30,38 @@ const data = await resp.json();
    </section>
 
 	<section class="py-12 px-1 lg:py-24 lg:px-14 bg-slate-900">
-		<div
-			class="mx-auto grid grid-cols-2 gap-x-1 gap-y-7 lg:gap-y-12 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 justify-items-center"
-		>
-			{
-				data?.map((categories: { name: string; image: string }) => (
-						<Category name={categories.name} image={categories.image} />
-					))
-			}
-		</div>
+      <div class="container relative space-y-10 2xl:max-w-[1344px]">
+         <div
+            class="mx-auto grid gap-x-3 gap-y-6 lg:gap-y-12 lg:gap-x-6 justify-items-center" id="categorias"
+         >
+            {
+               data.categ?.map((categories: { description: string; img: string; }) => (
+                  <Category
+                     name={ categories.description }
+                     image={ categories.img }
+                  />
+               
+               ))
+            }
+         </div>
+
+      </div>
 
 	</section>
 
 
    <Footer />
 </Layout>
+
+<style >
+   #categorias {
+      display: grid;
+      grid-template-columns: repeat( auto-fit,minmax(195px,1fr) );
+   }
+   @media (min-width: 1024px) {
+      #categorias {
+         grid-template-columns: repeat( auto-fit,minmax(270px,1fr) );
+      }
+
+   }
+</style>
