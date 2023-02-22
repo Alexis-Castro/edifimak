@@ -27,13 +27,13 @@ const { data } = await resp.json();
          {
             data.produc?.slice(0, 16).map(
                (products: {
-                  category: string;
+                  categoria: string;
                   title: string;
                   precio: number;
                   img: string;
                }) => (
                   <Product client:load
-                     category={'category'}
+                     category={products.categoria}
                      title={products.title}
                      price={products.precio}
                      image={products.img}
@@ -45,6 +45,15 @@ const { data } = await resp.json();
    </div>
 </section>
 
-<style is:global>
-   
+<style >
+   #products {
+      display: grid;
+      grid-template-columns: repeat( auto-fit,minmax(195px,1fr) );
+   }
+   @media (min-width: 1024px) {
+      #products {
+         grid-template-columns: repeat( auto-fit,minmax(270px,1fr) );
+      }
+
+   }
 </style>
