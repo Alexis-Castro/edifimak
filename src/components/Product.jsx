@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Modal from 'react-modal';
-import { capitalizarPrimeraLetra, currencyFormatter } from "../utils/utiles";
+import { currencyFormatter } from "../utils/utiles";
 
 Modal.setAppElement('#products');
 
@@ -23,14 +23,16 @@ export const Product = ({ image, category = '', title, price }) => {
                >
                   <img
                      src={image}
-                     alt="Usuario"
+                     alt={title}
+                     width={318}
+                     height={318}
                      className="h-full w-full object-cover object-center group-hover:scale-110 transition duration-300"
                   />
                </figure>
                <div className="p-4 space-y-4">
                   <div className="flex items-center justify-between text-center font-medium">
                      <div className="leading-tight text-left">
-                        <h5 className="uppercase text-xs text-[#019939] font-semibold my-1">
+                        <h5 className="uppercase text-xs lg:text-sm text-[#019939] font-semibold my-1">
                            {category}
                         </h5>
                         <h3 className="text-gray-50 leading-tight text-base mb-4">
