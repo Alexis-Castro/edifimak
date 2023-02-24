@@ -1,3 +1,13 @@
+export function slugify(text) {
+   return text
+      .toString()
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^\w-]+/g, '')
+      .replace(/--+/g, '-')
+      .replace(/^-+/, '')
+      .replace(/-+$/, '');
+}
 export const currencyFormatter = ({ currency, value }) => {
    const formatter = new Intl.NumberFormat('es-PE', {
       style: 'currency',
