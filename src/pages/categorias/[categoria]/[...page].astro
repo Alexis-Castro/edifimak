@@ -3,6 +3,7 @@ import Layout from "../../../layouts/base.astro";
 import Header from "../../../components/Header.astro";
 import Footer from "../../../components/Footer.astro";
 import { Product } from "../../../components/Product";
+import { slugify } from "../../../utils/utiles";
 
 export async function getStaticPaths({ paginate }) {
    // Carga tus datos con fetch(), Astro.glob(), etc.
@@ -23,15 +24,16 @@ export async function getStaticPaths({ paginate }) {
          (product: { categoria: string }) =>
          // console.log(product.categoria.toLowerCase())
          
-            product.categoria.toLowerCase() ===
-            categoria.description.toLowerCase()
+            slugify(product.categoria) ===
+            slugify(categoria.description)
       );
 
       // console.log(filteredProducts);
       
 
       return paginate(filteredProducts, {
-         params: { categoria: categoria.description.toLowerCase() },
+         params: { categoria: slugify(categoria.description) },
+         props: { name: categoria.description },
          pageSize: 10,
       });
    });
@@ -44,11 +46,11 @@ export async function getStaticPaths({ paginate }) {
    //    // },
    // });
 }
-const { page } = Astro.props;
+const { page, name } = Astro.props;
 const { categoria } = Astro.params;
 
-// console.log(Astro.props);
-// console.log(Astro.params);
+console.log(Astro.props);
+console.log(Astro.params);
 ---
 
 <Layout
@@ -65,7 +67,7 @@ const { categoria } = Astro.params;
             <div class="md:flex items-center justify-center">
                <div class="text-center">
                   <h2 class="text-2xl font-bold uppercase text-white">
-                     {categoria}
+                     {name}
                   </h2>
                </div>
             </div>
@@ -210,11 +212,11 @@ const { categoria } = Astro.params;
 <style >
    #products {
       display: grid;
-      grid-template-columns: repeat( auto-fit,minmax(195px,1fr) );
+      grid-template-columns: repeat( auto-fill,minmax( min(100%, 195px), 1fr) );
    }
    @media (min-width: 1024px) {
       #products {
-         grid-template-columns: repeat( auto-fit,minmax(270px,1fr) );
+         grid-template-columns: repeat( auto-fill,minmax( min(100%, 270px),1fr) );
       }
 
    }
