@@ -1,4 +1,6 @@
 ---
+import { slugify } from "../utils/utiles";
+
 export interface Props {
    name: string;
    image: string;
@@ -11,11 +13,7 @@ const { image, name } = Astro.props;
    class="flex flex-col mx-auto w-full rounded-lg overflow-hidden hover:scale-105 transition"
 >
    <a
-      href={`/edifimak/categorias/${name
-         .toLowerCase()
-         .toLowerCase()
-         .replace(/ /g, "-")
-         .replace(/[^\w-]+/g, "")}`}
+      href={`/edifimak/categorias/${slugify(name)}`}
       class="relative block bg-[#019939]"
    >
       <figure class="overflow-hidden w-full">
