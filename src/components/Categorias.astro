@@ -45,11 +45,11 @@ const { data } = await resp.json();
 <style >
    #categorias {
       display: grid;
-      grid-template-columns: repeat( auto-fit,minmax(195px,1fr) );
+      grid-template-columns: repeat( auto-fill,minmax( min(100%, 195px), 1fr) );
    }
    @media (min-width: 1024px) {
       #categorias {
-         grid-template-columns: repeat( auto-fit,minmax(240px,1fr) );
+         grid-template-columns: repeat( auto-fill,minmax( min(100%, 270px),1fr) );
       }
 
    }
