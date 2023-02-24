@@ -193,3 +193,16 @@ console.log(Astro.props);
 
    <Footer />
 </Layout>
+
+<style >
+   #products {
+      display: grid;
+      grid-template-columns: repeat( auto-fill,minmax( min(100%, 195px), 1fr) );
+   }
+   @media (min-width: 1024px) {
+      #products {
+         grid-template-columns: repeat( auto-fill,minmax( min(100%, 270px),1fr) );
+      }
+
+   }
+</style>
